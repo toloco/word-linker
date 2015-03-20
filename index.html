@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Words Linker</title>
+        <meta name="viewport" content="width=1000, user-scalable=no" />
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="page-scroller"><div class="list-wrapper"><ul class="list" id="thelist"></ul></div></div>
+
+        <div class="page-wrapper"></div>
+
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="words.js"></script>
+        <script type="text/javascript">
+            function load_text(selector){
+                $("#thelist").html("");
+                $(".page-wrapper").html("");
+                l = [];
+                $(selector).val().split("\n").forEach(function(sentence){
+                    l.push("<li class=\"sentence\">" + sentence + "</li>");
+                });
+                $("#thelist").html(l.join(""));       
+                Avgrund.hide();
+                scroller();
+                Words.init('.sentence');
+            }
+        </script>
+        <script src="iscroll-probe.js"></script>
+        <script src="script.js"></script>
+        <script src="modal.js"></script>
+
+        <!-- Buttons -->
+        <div class="buttoners">
+            <a href="#" onclick="Avgrund.show('#popup');">Load text</a>
+            <a href="#" onclick="Words.expo()">Export <i class="fa fa-file-text"></i></a>
+        </div>
+
+        <aside id="popup" class="avgrund-popup">
+            <textarea id="new_text" placeholder="Add your text here. It will be split \n"></textarea>
+            <button onclick="Avgrund.hide();">Close</button>
+            <button onclick="load_text('#new_text');">Load</button>
+        </aside>
+
+        <style type="text/css" media="screen">
+            .buttoners {
+                position: absolute;
+                right: 20px;
+                bottom: 25px;
+                font-size: 15px;
+                color: #fff;
+                z-index: 20;
+                vertical-align: middle;
+            }
+
+            .buttoners * + * {
+                margin-left: 15px;
+            }
+
+            .buttoners a {
+                padding: 8px 10px;
+                color: #ddd;
+                border: 2px solid #666;
+                border-radius: 2px;
+                text-decoration: none;
+            }
+
+            .buttoners a:hover {
+                border-color: #aaa;
+                color: #fff;
+            }
+
+            @media screen and (max-width: 1000px) {
+                .buttoners {
+                    width: 100%;
+                    left: 0;
+                    right: auto;
+                    bottom: 0;
+                    padding: 40px;
+                    background: #222;
+                    border-top: 1px solid #333;
+                    text-align: center;
+                }
+            }
+        </style>
+    </body>
+</html>
