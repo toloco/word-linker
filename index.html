@@ -35,8 +35,8 @@
 
         <!-- Buttons -->
         <div class="buttoners">
-            <a href="#" onclick="Avgrund.show('#popup');">Load text</a>
-            <a href="#" onclick="Words.expo()">Export <i class="fa fa-file-text"></i></a>
+            <a href="#" onclick="Avgrund.show('#popup');"><i class="fa fa-cloud-upload"></i>Load text</a>
+            <a href="#" onclick="Words.expo()"> <i class="fa fa-file-text"></i>Export</a>
         </div>
 
         <aside id="popup" class="avgrund-popup">
@@ -66,6 +66,9 @@
                 border: 2px solid #666;
                 border-radius: 2px;
                 text-decoration: none;
+            }
+            .buttoners a i{
+                padding-right: 5px;
             }
 
             .buttoners a:hover {
